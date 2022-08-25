@@ -4,14 +4,13 @@
  * @Author: Zhao Jiangfeng
  * @Date: 2022-06-26 00:01:08
  * @LastEditors: Zhao Jiangfeng
- * @LastEditTime: 2022-06-27 01:21:39
+ * @LastEditTime: 2022-06-30 01:30:12
  */
 
 #include <iostream>
 #include <queue>
 using namespace std;
-int **limits;
-int **valid_days;
+int *limits;
 
 struct Record
 {
@@ -24,20 +23,26 @@ struct Record
         return valid_day > a.valid_day;
     }
 };
+inline int get_real_id(int i, int j)
+{
+    if (i >= j)
+    {
+        return i * (i + 1) / 2 + j;
+    }
+    else
+        return j * (j + 1) / 2 + i;
+}
 
 int main()
 {
     int n, m;
     cin >> n >> m;
-    limits = new int *[n + 1];
+    int max_id = (n + 1) * (n + 2) / 2;
+    limits = new int[max_id];
     priority_queue<Record> records;
-    for (int i = 0; i <= n; i++)
+    for (int i = 0; i < max_id; i++)
     {
-        limits[i] = new int[n + 1];
-        for (int j = 0; j <= n; j++)
-        {
-            limits[i][j] = 0;
-        }
+        limits[i] = 0;
     }
     for (int i = 1; i <= m; i++)
     {
@@ -47,8 +52,8 @@ int main()
         {
             int u, v, x, y;
             cin >> u >> v >> x >> y;
-            limits[u][v] += x;
-            limits[v][u] += x;
+            int real_id = get_real_id(u, v);
+            limits[real_id] += x;
             records.push(Record{u, v, x, i + y - 1});
         }
         int l;
@@ -59,9 +64,10 @@ int main()
             cin >> id;
             for (int j = 1; j <= n; j++)
             {
-                if (limits[id][j] > max)
+                int real_id = get_real_id(id, j);
+                if (limits[real_id] > max)
                 {
-                    max = limits[id][j];
+                    max = limits[real_id];
                     max_id = j;
                 }
             }
@@ -79,9 +85,10 @@ int main()
                 bool sign = true;
                 for (int k = 1; k <= n; k++)
                 {
-                    if (limits[j][k] > max)
+                    int real_id = get_real_id(j, k);
+                    if (limits[real_id] > max)
                     {
-                        max = limits[j][k];
+                        max = limits[real_id];
                         sign = false;
                         object[j] = k;
                     }
@@ -107,8 +114,7 @@ int main()
         {
             while (records.top().valid_day == i)
             {
-                limits[records.top().id1][records.top().id2] -= records.top().limit;
-                limits[records.top().id2][records.top().id1] -= records.top().limit;
+                limits[get_real_id(records.top().id1, records.top().id2)] -= records.top().limit;
                 records.pop();
             }
         }
