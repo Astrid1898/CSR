@@ -4,7 +4,7 @@
  * @Author: Zhao Jiangfeng
  * @Date: 2022-08-24 16:48:10
  * @LastEditors: Zhao Jiangfeng
- * @LastEditTime: 2022-08-26 01:21:04
+ * @LastEditTime: 2022-08-26 02:42:54
  */
 #include <iostream>
 #include <map>
@@ -41,14 +41,14 @@ int main()
         map<string, string> parsed_order;
         string order_part;
         orders >> order_part;
-        do
+        while (orders)
         {
+            order_part.clear();
             orders >> order_part;
-            if (order.empty())
+            if (order_part.empty())
                 break;
-            if (order_part[0] == '-' && para.count(order_part[1]))
+            else if (order_part[0] == '-' && para.count(order_part[1]))
             {
-                parsed_order[order_part] = "";
                 if (para[order_part[1]])
                 {
                     string tmp;
@@ -56,18 +56,21 @@ int main()
                     if (tmp.empty())
                         break;
                     parsed_order[order_part] = tmp;
-                    cout << parsed_order[order_part] << endl;
+                }
+                else
+                {
+                    parsed_order[order_part] = "";
                 }
             }
             else
                 break;
-        } while (orders);
+        }
         cout << "Case " << i << ": ";
         for (auto iter = parsed_order.begin(); iter != parsed_order.end(); iter++)
         {
             cout << iter->first << " ";
-            // if (!(iter->second.empty()))
-            cout << iter->second << " ";
+            if (!(iter->second.empty()))
+                cout << iter->second << " ";
         }
         cout << endl;
     }
