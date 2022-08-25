@@ -4,24 +4,72 @@
  * @Author: Zhao Jiangfeng
  * @Date: 2022-08-24 16:48:10
  * @LastEditors: Zhao Jiangfeng
- * @LastEditTime: 2022-08-24 19:22:28
+ * @LastEditTime: 2022-08-26 01:21:04
  */
 #include <iostream>
 #include <map>
 #include <string>
+#include <sstream>
+#include <vector>
+#include <set>
 using namespace std;
 int main()
 {
 
     string format_string;
     cin >> format_string;
+    map<char, bool> para;
     for (int i = 0; i < format_string.length(); i++)
     {
+        if (format_string[i] != ':')
+        {
+            para[format_string[i]] = false;
+        }
+        else
+        {
+            para[format_string[i - 1]] = true;
+        }
     }
     int n;
     cin >> n;
     for (int i = 1; i <= n; i++)
     {
+        string order;
+        getchar();
+        getline(cin, order);
+        istringstream orders(order);
+        map<string, string> parsed_order;
+        string order_part;
+        orders >> order_part;
+        do
+        {
+            orders >> order_part;
+            if (order.empty())
+                break;
+            if (order_part[0] == '-' && para.count(order_part[1]))
+            {
+                parsed_order[order_part] = "";
+                if (para[order_part[1]])
+                {
+                    string tmp;
+                    orders >> tmp;
+                    if (tmp.empty())
+                        break;
+                    parsed_order[order_part] = tmp;
+                    cout << parsed_order[order_part] << endl;
+                }
+            }
+            else
+                break;
+        } while (orders);
+        cout << "Case " << i << ": ";
+        for (auto iter = parsed_order.begin(); iter != parsed_order.end(); iter++)
+        {
+            cout << iter->first << " ";
+            // if (!(iter->second.empty()))
+            cout << iter->second << " ";
+        }
+        cout << endl;
     }
     return 0;
 }
