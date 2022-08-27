@@ -4,8 +4,15 @@
  * @Author: Zhao Jiangfeng
  * @Date: 2022-08-24 16:48:10
  * @LastEditors: Zhao Jiangfeng
- * @LastEditTime: 2022-08-26 02:42:54
+ * @LastEditTime: 2022-08-27 02:09:15
  */
+
+/*
+ *这道题目主要考查的是sstream的用法，使用sstream将一串字符使用空格分开，使用十分方便
+ *这里有错误别我踩到了，就是sstream为空的时候，使用>>依然是不会报错的。并且，原先接受
+ *输出流的变量，会保持之前的值，导致程序出现难以察觉的bug。
+ */
+
 #include <iostream>
 #include <map>
 #include <string>
