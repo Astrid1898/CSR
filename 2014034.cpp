@@ -4,7 +4,7 @@
  * @Author: Zhao Jiangfeng
  * @Date: 2022-08-26 21:15:15
  * @LastEditors: Zhao Jiangfeng
- * @LastEditTime: 2022-08-26 22:11:56
+ * @LastEditTime: 2022-08-29 01:41:50
  */
 #include <iostream>
 #include <cmath>
@@ -76,7 +76,7 @@ int main()
     {
         for (int j = i + 1; j < n + m; j++)
         {
-            graph[i][j]=graph[j][i] = is_connected(i, j);
+            graph[i][j] = graph[j][i] = is_connected(i, j);
         }
     }
 
