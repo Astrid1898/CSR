@@ -33,7 +33,7 @@ void bfs()
             max_len = len;
             max_len_id = cur;
         }
-        for (int i = 0; i < graph[cur].size(); i++)
+        for (unsigned int i = 0; i < graph[cur].size(); i++)
         {
             if (!visited[graph[cur][i]])
             {
