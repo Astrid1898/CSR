@@ -4,7 +4,7 @@
  * @Author: Zhao Jiangfeng
  * @Date: 2022-05-28 23:40:43
  * @LastEditors: Zhao Jiangfeng
- * @LastEditTime: 2022-06-11 15:49:59
+ * @LastEditTime: 2022-09-06 02:33:29
  */
 
 #include <bitset>
@@ -59,26 +59,36 @@ using namespace std;
 //     return 0;
 // }
 
+// int main()
+// {
+//     // unordered_map<int, int> m;
+//     map<int, int> m;
+//     m[4] = 6;
+//     m[2] = 7;
+//     // for (auto iter = m.begin(); iter != m.end(); iter++)
+//     // cout << (*iter).first << endl;
+//     // for (int i = 0; i < 3; i++)
+//     // {
+//     //     a[i] = new int(i);
+//     // }
+//     // vector<int *> b(a, a + 3);
+//     // cout << *b[1];
+//     int *a = new int[10];
+//     for (int i = 0; i < 10; i++)
+//     {
+//         a[i] = i;
+//     }
+//     int* c = a + 2;
+//     cout << c[0];
+//     return 0;
+// }
+
 int main()
 {
-    // unordered_map<int, int> m;
-    map<int, int> m;
-    m[4] = 6;
-    m[2] = 7;
-    // for (auto iter = m.begin(); iter != m.end(); iter++)
-    // cout << (*iter).first << endl;
-    // for (int i = 0; i < 3; i++)
-    // {
-    //     a[i] = new int(i);
-    // }
-    // vector<int *> b(a, a + 3);
-    // cout << *b[1];
-    int *a = new int[10];
-    for (int i = 0; i < 10; i++)
-    {
-        a[i] = i;
-    }
-    int* c = a + 2;
-    cout << c[0];
+    string s1, s2;
+    cin >> s1;
+    getline(cin, s2);
+    cout << "s1=" << s1 << ";" << endl;
+    cout << "s2=" << s2 << ";" << endl;
     return 0;
 }
