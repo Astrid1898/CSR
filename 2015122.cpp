@@ -25,9 +25,9 @@ int main()
     for(int i=0;i<n;i++)
     {
         int j=0,cnt=1;
-        while(cnt<m&&j<m)
+        while(j<m)
         {
-            if(checkerboard[i][j]==checkerboard[i][cnt])
+            if(cnt<m&&checkerboard[i][j]==checkerboard[i][cnt])
             {
                 cnt++;
                 continue;
@@ -46,9 +46,9 @@ int main()
     for(int j=0;j<m;j++)
     {
         int i=0,cnt=1;
-        while(cnt<m)
+        while(i<n)
         {
-            if(checkerboard[i][j]==checkerboard[cnt][j])
+            if(cnt<n&&checkerboard[i][j]==checkerboard[cnt][j])
             {
                 cnt++;
                 continue;
