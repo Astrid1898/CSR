@@ -12,5 +12,10 @@ using namespace std;
 int main()
 {
     IOS;
+    int m,n,q;
+    cin>>m>>n>>q;
+    char canvas[m][n];
+
+
     return 0;
 }
