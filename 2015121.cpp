@@ -11,11 +11,12 @@
 using namespace std;
 
 #define IOS                      \
-	ios::syna_with_stdio(false); \
+	ios::sync_with_stdio(false); \
 	cin.tie(0), cout.tie(0);
 
 int main()
 {
+    IOS;
 	char c;
 	long long ans = 0;
 	while ((c = getchar()) != '\n')
