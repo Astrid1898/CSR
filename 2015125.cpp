@@ -88,16 +88,16 @@ int main()
     cin >> n;
     while (n--)
     {
-        for(int i=0;i<m;i++)
-            for(int j=0;j<m;j++)
-                a[i][j]=a_copy[i][j];
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < m; j++)
+                a[i][j] = a_copy[i][j];
         int k;
         cin >> k;
         if (k == 0)
         {
             for (int i = 0; i < m; i++)
             {
-                cout << b[i] ;
+                cout << b[i];
             }
         }
         else
@@ -110,7 +110,7 @@ int main()
                 cout << ans[i];
             }
         }
-        cout<<endl;
+        cout << endl;
     }
 
     return 0;
