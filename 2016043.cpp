@@ -4,97 +4,64 @@
  * @Author: Zhao Jiangfeng
  * @Date: 2022-09-11 01:40:09
  * @LastEditors: Zhao Jiangfeng
- * @LastEditTime: 2022-09-11 20:17:48
+ * @LastEditTime: 2022-09-12 01:57:40
+ *
+ *
+ * 一开始被题目给的目录结构给迷惑了，导致没有理清思路，在错误的道路上越州越远。
+ * 读题也很重要，要准确理解题意。很显然，根据经验就可以知道路径解析并不需要知道
+ * 具体的目录结构，所以题目只是帮助理解。
+ *
+ * 还有就是这里由于用到了getchar和cin cout等方法，并不能取消同步。
+ *
  */
+
 #include <bits/stdc++.h>
-
 using namespace std;
-
-#define IOS                      \
-    ios::sync_with_stdio(false); \
-    cin.tie(0), cout.tie(0);
-
-class Node
-{
-private:
-    string name;
-    bool is_dir;
-    int num_of_children;
-    Node **children;
-    Node *father;
-
-public:
-    Node(string n, bool d) : name(n), is_dir(d)
-    {
-        children = nullptr;
-        father = nullptr;
-        num_of_children = 0;
-    }
-
-    void set_father(Node *n)
-    {
-        father = n;
-    }
-
-    void set_children_num(int num)
-    {
-        children = new Node *[num];
-    }
-
-    void add_child(Node *c)
-    {
-        children[num_of_children++] = c;
-    }
-
-    string get_name()
-    {
-        return name;
-    }
-
-    Node *get_father()
-    {
-        return father;
-    }
-
-    Node **get_children()
-    {
-        return children;
-    }
-
-    int get_children_num()
-    {
-        return num_of_children;
-    }
-};
 
 int main()
 {
-    IOS;
-    Node *root = new Node("/", true);
-    Node *d1 = new Node("d1", true);
-    Node *d2 = new Node("d2", true);
-    Node *d3 = new Node("d3", true);
-    Node *d4 = new Node("d4", true);
-    Node *f1 = new Node("f1", false);
-    Node *f2 = new Node("f2", false);
-    Node *f3 = new Node("f3", false);
-    Node *f4 = new Node("f4", false);
-    Node *f1_2 = new Node("f5", false);
+    int pos, num;
+    string curDir;
+    cin >> num >> curDir;
+    getchar();
+    for (int i = 0; i < num; i++)
+    {
+        string line;
+        getline(cin, line);
+        if (line[0] != '/')
+            line = curDir + "/" + line;
 
-    root->set_children_num(2);
-    root->add_child(d1);
-    root->add_child(d2);
-    d1->set_children_num(2);
-    d1->add_child(f1);
-    d1->add_child(d2);
-    d2->set_children_num(3)
-        d2->add_child(d3);
-    d2->add_child(d4);
-    d2->add_child(f4);
-    d3->set_children_num(1);
-    d3->add_child(f2);
-    d4->set_children_num(1);
-    d4->add_child(f1_2);
+        if (line.size() == 0)
+            line = curDir;
 
+        while ((pos = line.find("//")) != -1)
+        {
+            int count = 2;
+            while (line[pos + count] == '/')
+                count++;
+            line.erase(pos, count - 1);
+        }
+
+        while ((pos = line.find("/../")) != -1)
+        {
+            if (pos == 0)
+                line.erase(pos + 1, 3);
+            else
+            {
+                int spos;
+                spos = line.rfind("/", pos - 1);
+                line.erase(spos, pos - spos + 3);
+            }
+        }
+
+        while ((pos = line.find("/./")) != -1)
+        {
+            line.erase(pos + 1, 2);
+        }
+
+        if (line.size() > 1 && line[line.size() - 1] == '/')
+            line.erase(line.size() - 1);
+        cout << line << endl;
+    }
     return 0;
 }
