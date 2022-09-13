@@ -2,6 +2,8 @@
 // Created by zhaojiangfeng on 2022/9/13.
 //
 
+//只有70分，运行错误，改不出来
+
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -75,30 +77,29 @@ public:
     void attack(player &p, int att_id, int def_id)
     {
         int att = this->retinues[att_id - 1].get_attack();
-        if (def_id != 0)
+        int def_att = p.be_attacked(def_id, att);
+        if (!retinues[att_id - 1].minus_hp(def_att))
         {
-            int def_att = p.be_attacked(def_id, att);
-            if (!retinues[att_id - 1].minus_hp(def_att))
-            {
-                this->retinues.erase(retinues.begin() + att_id - 1);
-            }
-        }
-        else
-        {
-            int def_att = p.be_attacked(def_id, att);
-            if (!this->minus_hp(def_att))
-            {
-                this->is_alive = false;
-            }
+            this->retinues.erase(retinues.begin() + att_id - 1);
         }
     }
 
     int be_attacked(int def_id, int att)
     {
         int result = this->retinues[def_id - 1].get_attack();
-        if (!this->retinues[def_id - 1].minus_hp(att))
+        if (def_id != 0)
         {
-            this->retinues.erase(retinues.begin() + def_id - 1);
+            if (!this->retinues[def_id - 1].minus_hp(att))
+            {
+                this->retinues.erase(retinues.begin() + def_id - 1);
+            }
+        }
+        else
+        {
+            if (!this->minus_hp(att))
+            {
+                this->is_alive = false;
+            }
         }
         return result;
     }
@@ -121,10 +122,11 @@ int main()
 {
     IOS;
 
-    freopen("in.txt", "r", stdin);
+    freopen("CSR/in.txt", "r", stdin);
 
     int n;
     cin >> n;
+    // cout << "n: " << n << endl;
     player player1(30, 0), player2(30, 0);
     string op;
     player *now_player = &player1;
@@ -143,6 +145,10 @@ int main()
             int attacker, defender;
             cin >> attacker >> defender;
             now_player->attack(*next_player, attacker, defender);
+            if (!now_player->get_alive() || !next_player->get_alive())
+            {
+                break;
+            }
         }
         else
         {
@@ -180,6 +186,7 @@ int main()
     cout << player2.get_retinue_num();
     player2.print_retinue_hp();
     cout << endl;
+    fclose(stdin);
 
     return 0;
 }
