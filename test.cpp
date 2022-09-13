@@ -7,15 +7,15 @@
  * @LastEditTime: 2022-09-06 02:33:29
  */
 
-#include <bitset>
-#include <ctime>
-#include <iostream>
-#include <vector>
-#include <unordered_map>
-#include <set>
-#include <map>
-#include <queue>
-using namespace std;
+//#include <bitset>
+//#include <ctime>
+//#include <iostream>
+//#include <vector>
+//#include <unordered_map>
+//#include <set>
+//#include <map>
+//#include <queue>
+//using namespace std;
 
 // int main()
 // {
@@ -83,12 +83,50 @@ using namespace std;
 //     return 0;
 // }
 
+//int main()
+//{
+//    string s1, s2;
+//    cin >> s1;
+//    getline(cin, s2);
+//    cout << "s1=" << s1 << ";" << endl;
+//    cout << "s2=" << s2 << ";" << endl;
+//    return 0;
+//}
+
+#include<stdio.h>
+#include<math.h>
+
 int main()
 {
-    string s1, s2;
-    cin >> s1;
-    getline(cin, s2);
-    cout << "s1=" << s1 << ";" << endl;
-    cout << "s2=" << s2 << ";" << endl;
+    int n;
+    int a[100];
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++)
+    {
+        scanf("%d", &a[i]);
+    }
+    double sqrtD = 0, average = 0, addition = 0;
+    for (int i = 0; i < n; i++)
+    {
+        addition += a[i];
+    }
+    average = addition / n;
+    for (int i = 0; i < n; i++)
+    {
+        sqrtD = sqrtD + pow(a[i] - average, 2);
+    }
+    sqrtD = sqrtD / n;
+    sqrtD = pow(sqrtD, 0.5);
+    double result[100];
+    for (int i = 0; i < n; i++)
+    {
+        result[i] = (a[i] - average) / sqrtD;
+    }
+    for (int i = 0; i < n - 1; i++)
+    {
+        printf("%f\n", result[i]);
+    }
+    printf("%lf", result[n - 1]);
     return 0;
+
 }
