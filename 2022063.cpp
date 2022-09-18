@@ -4,7 +4,11 @@
  * @Author: Zhao Jiangfeng
  * @Date: 2022-09-18 00:53:56
  * @LastEditors: Zhao Jiangfeng
- * @LastEditTime: 2022-09-18 03:00:48
+ * @LastEditTime: 2022-09-18 18:58:48
+ *
+ * 通过role作为代理，注意中间变量即可
+ *
+ *
  */
 #include <bits/stdc++.h>
 
@@ -99,6 +103,7 @@ int main()
     vector<string> user_groups;
     for (int i = 0; i < q; i++)
     {
+        user_groups.clear();
         cin >> user_name >> ng;
         for (int j = 0; j < ng; j++)
         {
