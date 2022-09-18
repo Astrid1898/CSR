@@ -4,7 +4,7 @@
  * @Author: Zhao Jiangfeng
  * @Date: 2022-09-19 01:03:23
  * @LastEditors: Zhao Jiangfeng
- * @LastEditTime: 2022-09-19 01:04:47
+ * @LastEditTime: 2022-09-19 01:06:58
  */
 #include <bits/stdc++.h>
 
@@ -19,6 +19,10 @@ int main()
     IOS;
 
     freopen("CSR/in.txt", "r", stdin);
+    int m;
+    for (int i = 0; i < m; i++)
+    {
+    }
 
     return 0;
 }
