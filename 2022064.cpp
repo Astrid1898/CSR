@@ -4,9 +4,14 @@
  * @Author: Zhao Jiangfeng
  * @Date: 2022-09-19 01:03:23
  * @LastEditors: Zhao Jiangfeng
- * @LastEditTime: 2022-09-21 13:16:04
+ * @LastEditTime: 2022-09-22 12:49:10
  */
 #include <bits/stdc++.h>
+
+struct mirror
+{
+    int x1;
+};
 
 using namespace std;
 
