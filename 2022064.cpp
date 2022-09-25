@@ -4,7 +4,7 @@
  * @Author: Zhao Jiangfeng
  * @Date: 2022-09-19 01:03:23
  * @LastEditors: Zhao Jiangfeng
- * @LastEditTime: 2022-09-23 00:11:36
+ * @LastEditTime: 2022-09-25 21:46:08
  */
 #include <bits/stdc++.h>
 
@@ -12,6 +12,7 @@ struct mirror
 {
     int x1;
     int x2;
+    int y1;
     int y2;
 };
 
