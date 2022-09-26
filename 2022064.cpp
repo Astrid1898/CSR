@@ -4,7 +4,7 @@
  * @Author: Zhao Jiangfeng
  * @Date: 2022-09-19 01:03:23
  * @LastEditors: Zhao Jiangfeng
- * @LastEditTime: 2022-09-25 21:46:08
+ * @LastEditTime: 2022-09-27 01:34:06
  */
 #include <bits/stdc++.h>
 
@@ -14,6 +14,7 @@ struct mirror
     int x2;
     int y1;
     int y2;
+    int id;
 };
 
 using namespace std;
