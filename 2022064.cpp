@@ -4,7 +4,7 @@
  * @Author: Zhao Jiangfeng
  * @Date: 2022-09-19 01:03:23
  * @LastEditors: Zhao Jiangfeng
- * @LastEditTime: 2022-09-28 01:28:23
+ * @LastEditTime: 2022-09-29 02:06:07
  */
 #include <bits/stdc++.h>
 
@@ -27,7 +27,9 @@ int main()
 {
     IOS;
 
+    freopen("in.txt", "r", stdin);
     vector<mirror> mirrors;
+
     freopen("CSR/in.txt", "r", stdin);
     int m, id;
     cin >> m;
