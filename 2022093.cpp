@@ -12,5 +12,7 @@ using namespace std;
 int main()
 {
     IOS;
+
+    freopen("in.txt", "r", stdin);
     return 0;
 }
