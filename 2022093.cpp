@@ -14,5 +14,8 @@ int main()
     IOS;
 
     freopen("in.txt", "r", stdin);
+
+    int n;
+    cin>>n;
     return 0;
 }
