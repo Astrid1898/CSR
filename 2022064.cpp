@@ -8,6 +8,12 @@
  */
 #include <bits/stdc++.h>
 
+using namespace std;
+
+#define IOS                      \
+    ios::sync_with_stdio(false); \
+    cin.tie(0), cout.tie(0);
+
 struct mirror
 {
     int x1;
@@ -17,11 +23,6 @@ struct mirror
     int id;
 };
 
-using namespace std;
-
-#define IOS                      \
-    ios::sync_with_stdio(false); \
-    cin.tie(0), cout.tie(0);
 
 int main()
 {
