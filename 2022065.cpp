@@ -97,10 +97,10 @@ int main()
                 for (int j = l - 1; j < r; j++)
                 {
                     totalX += points[j][0];
-                    totalX += points[j][1];
+                    totalY += points[j][1];
                 }
                 cout << setiosflags(ios::fixed) << setprecision(6);
-                cout << totalX / (r - l + 1) << " " << totalY / (r - 1 + 1) << endl;
+                cout << totalX / (r - l + 1) << " " << totalY / (r - l + 1) << endl;
             }
                 break;
 
