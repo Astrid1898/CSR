@@ -3,6 +3,11 @@
 //
 
 
+
+/*
+ * 将题目最终转化为两条线交叉得上下左右点数，这里有几个要注意的东西，一个是及时舍弃已经不可能的线，另一个是折半查找
+ */
+
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -29,12 +34,14 @@ bool cmp(const vector<Point> &a, const vector<Point> b)
     return a.size() < b.size();
 }
 
-
+//查找交点位置，返回点两侧最少的点的数目
 int findX(const vector<Point> &sameY, int x)
 {
+    int l = 0, r = sameY.size();
     if (x <= sameY[0].x)
         return 0;
-    int l = 0, r = sameY.size();
+    if(x>=sameY[r-1].x)
+        return 0;
     while (l < r - 1)
     {
         int mid = (l + r) / 2;
@@ -57,9 +64,11 @@ int findX(const vector<Point> &sameY, int x)
 
 int findY(const vector<Point> &sameX, int y)
 {
+    int l = 0, r = sameX.size();
     if (y <= sameX[0].y)
         return 0;
-    int l = 0, r = sameX.size();
+    if(y>=sameX[r-1].y)
+        return 0;
     while (l < r - 1)
     {
         int mid = (l + r) / 2;
@@ -98,6 +107,7 @@ int main()
 
     int index = 0;
     sameX[index].push_back(myVec[0]);
+    //连不成线得点首先被排除
     for (int i(1); i < myVec.size(); i++)
     {
         if (myVec[i].x == myVec[i - 1].x)
@@ -158,6 +168,7 @@ int main()
             {
                 maxnum = res;
                 count = 1;
+                //及时剪枝
                 while (!sameX.empty() && sameX.back().size() <= 2 * maxnum - 1)
                     sameX.pop_back();
                 while (!sameY.empty() && sameY.back().size() <= 2 * maxnum - 1)

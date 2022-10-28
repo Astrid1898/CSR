@@ -96,37 +96,56 @@
 #include<stdio.h>
 #include<math.h>
 
+//int main()
+//{
+//    int n;
+//    int a[100];
+//    scanf("%d", &n);
+//    for (int i = 0; i < n; i++)
+//    {
+//        scanf("%d", &a[i]);
+//    }
+//    double sqrtD = 0, average = 0, addition = 0;
+//    for (int i = 0; i < n; i++)
+//    {
+//        addition += a[i];
+//    }
+//    average = addition / n;
+//    for (int i = 0; i < n; i++)
+//    {
+//        sqrtD = sqrtD + pow(a[i] - average, 2);
+//    }
+//    sqrtD = sqrtD / n;
+//    sqrtD = pow(sqrtD, 0.5);
+//    double result[100];
+//    for (int i = 0; i < n; i++)
+//    {
+//        result[i] = (a[i] - average) / sqrtD;
+//    }
+//    for (int i = 0; i < n - 1; i++)
+//    {
+//        printf("%f\n", result[i]);
+//    }
+//    printf("%lf", result[n - 1]);
+//    return 0;
+//
+//}
+
+#include<bits/stdc++.h>
+
+using namespace std;
+struct Point
+{
+    int x;
+    int y;
+};
+
+
+
 int main()
 {
-    int n;
-    int a[100];
-    scanf("%d", &n);
-    for (int i = 0; i < n; i++)
-    {
-        scanf("%d", &a[i]);
-    }
-    double sqrtD = 0, average = 0, addition = 0;
-    for (int i = 0; i < n; i++)
-    {
-        addition += a[i];
-    }
-    average = addition / n;
-    for (int i = 0; i < n; i++)
-    {
-        sqrtD = sqrtD + pow(a[i] - average, 2);
-    }
-    sqrtD = sqrtD / n;
-    sqrtD = pow(sqrtD, 0.5);
-    double result[100];
-    for (int i = 0; i < n; i++)
-    {
-        result[i] = (a[i] - average) / sqrtD;
-    }
-    for (int i = 0; i < n - 1; i++)
-    {
-        printf("%f\n", result[i]);
-    }
-    printf("%lf", result[n - 1]);
-    return 0;
 
+    vector<vector<Point>>  samey(1);
+    cout<<samey[0].size();
+    return 0;
 }
