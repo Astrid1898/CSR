@@ -4,7 +4,7 @@
  * @Author: Zhao Jiangfeng
  * @Date: 2022-11-05 19:57:45
  * @LastEditors: Zhao Jiangfeng
- * @LastEditTime: 2022-11-05 19:59:07
+ * @LastEditTime: 2022-11-07 00:47:51
  */
 #include <bits/stdc++.h>
 
@@ -17,6 +17,7 @@ using namespace std;
 int main()
 {
     IOS;
+    int n;
 
     return 0;
 }
