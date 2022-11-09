@@ -4,7 +4,7 @@
  * @Author: Zhao Jiangfeng
  * @Date: 2022-11-05 19:57:45
  * @LastEditors: Zhao Jiangfeng
- * @LastEditTime: 2022-11-09 01:15:58
+ * @LastEditTime: 2022-11-09 21:15:49
  */
 #include <bits/stdc++.h>
 
@@ -18,15 +18,19 @@ using namespace std;
 int main()
 {
     IOS;
-    int n;
 
-    int t;
+    freopen("in.txt", "r", stdin);
+
+    int t, salary;
     cin >> t;
 
-    while (t > 0)
+    if (t <= 3000)
+        salary = t;
+    else if (t <= 4955)
     {
-        t = t - 30;
+        salary = (int)((t - 3000) / 0.03) + 3000;
     }
 
+    cout << salary << endl;
     return 0;
 }
