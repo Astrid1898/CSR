@@ -15,35 +15,62 @@ using namespace std;
     cin.tie(0);                  \
     cout.tie(0);
 
+/*
+ *题目说好的整百，其实无所谓，对精度要求比较宽泛，这里还是将最后两位置0了
+ * 扣税：
+ * 1500元以最多缴纳45元
+ * 4500元部分最多缴纳345元
+ * 9000元部分最多缴纳1245元
+ * 35000元部分最多缴纳7745元
+ * 55000元部分最多缴纳13745
+ * 80000元部分最多缴纳22495元
+ */
+
+
+
+
 int main()
 {
     IOS;
 
-    freopen("/home/jf-z/codefield/CODE_CPP/Cpp_Single/CSR/in.txt", "r", stdin);
+//    freopen("D:\\zjf\\csp\\csp\\csp\\in.txt", "r", stdin);
 
     int t, salary;
     cin >> t;
 
-    if (t <= 3000)
+    if (t <= 3500)
         salary = t;
     else if (t <= 4955)
     {
-        salary = (int)((t - 3000) / 0.97) + 3000;
+        salary = (t - 3500) *100/97 + 3500;
     }
     else if (t <= 7655)
     {
-        salary = (int)((t - 4995) / 0.9) + 5000;
+        salary = (t - 4955) *100/90 + 5000;
     }
     else if (t <= 11255)
     {
-        salary = (int)((t - 7655) / 0.8) + 8000;
+        salary = (t - 7655) *100/80 + 8000;
     }
-    else if (t <= 31655)
+    else if (t <= 30755)
     {
-        salary = (int)((t - 9000) / 0.75) + 12500;
+        salary = (t - 11255) *100/75 + 12500;
+    }
+    else if (t<=44755)
+    {
+        salary=(t-30755)*100/70+38500;
+    }
+    else if (t<=61005)
+    {
+        salary=(t-44755)*100/65+58500;
+    }
+    else
+    {
+        salary=(t-61005)*100/55+83500;
     }
 
-    salary = salary / 100 * 100;
+
+    salary = salary*100/100;
     cout << salary << endl;
     return 0;
 }

@@ -131,21 +131,45 @@
 //
 //}
 
-#include<bits/stdc++.h>
+#include <iostream>
+#include <bits/stdc++.h>
 
 using namespace std;
-struct Point
-{
-    int x;
-    int y;
-};
 
-
+double m[] = {0,1500,4500,9000,35000,55000,80000,200000};
+double suiLv[] = {1,0.97,0.90,0.80,0.75,0.70,0.65,0.55};
+double num[10];
 
 int main()
 {
 
-    vector<vector<Point>>  samey(1);
-    cout<<samey[0].size();
+    double t;
+    scanf("%lf",&t);
+    if(t <= 3500)
+        printf("%.0f\n",t);
+    else
+    {
+        int idx = 6;
+        double  p = t - 3500;
+        num[0] = 0;
+        for(int i=1; i<=7; i++)
+        {
+            num[i] = num[i-1] + (m[i]-m[i-1])* (1 - suiLv[i]);
+            //cout<<num[i]<<endl;
+        }
+        for(int i=1; i<=7; i++)
+        {
+            if(num[i] + p < m[i]) // 找到第一个上线
+            {
+                idx = i;
+                //cout<<"idx: "<<idx<<endl;
+                break;
+            }
+        }
+        double tmp = p - (m[idx-1] - num[idx-1]); // 小部分额度收税
+        double ans = m[idx-1] + tmp / suiLv[idx] + 3500;
+        printf("%.0f",ans);
+
+    }
     return 0;
 }
