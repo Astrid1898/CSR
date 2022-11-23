@@ -4,7 +4,7 @@
  * @Author: Zhao Jiangfeng
  * @Date: 2022-11-21 23:27:36
  * @LastEditors: Zhao Jiangfeng
- * @LastEditTime: 2022-11-23 16:32:10
+ * @LastEditTime: 2022-11-23 16:51:39
  */
 #include <bits/stdc++.h>
 
@@ -27,6 +27,8 @@ int main()
     {
         int num = n - i;
         for (int j = 0; j < num; j++)
+        {
+        }
     }
 
     cin >> n >> m;
