@@ -4,7 +4,7 @@
  * @Author: Zhao Jiangfeng
  * @Date: 2022-11-21 23:27:36
  * @LastEditors: Zhao Jiangfeng
- * @LastEditTime: 2022-11-22 22:38:57
+ * @LastEditTime: 2022-11-23 16:32:10
  */
 #include <bits/stdc++.h>
 
@@ -21,8 +21,15 @@ int main()
 
     freopen("in.txt", "r", stdin);
 
-    int n,m;
-    cin>>n>>m;
+    int n, m;
+
+    for (int i = 0; i < n; i++)
+    {
+        int num = n - i;
+        for (int j = 0; j < num; j++)
+    }
+
+    cin >> n >> m;
 
     return 0;
 }
