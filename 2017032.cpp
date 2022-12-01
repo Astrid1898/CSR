@@ -16,12 +16,11 @@ int main()
 
     int n,m;
     cin>>n>>m;
-    int queue[n+1],order[n+1];
+    vector<int> queue(n+1);
 
     for(int i=1;i<=n;i++)
     {
         queue[i]=i;
-        order[i]=i;
     }
 
     int id,operate;
@@ -29,23 +28,13 @@ int main()
     for(int i=0;i<m;i++)
     {
         cin>>id>>operate;
-        int next=order[i]+operate;
-        if(next<1)
-        {
-            next=1;
-        }
-        else if(next>n)
-        {
-            next=n;
-        }
-
-        order[id]=next;
-        int people_to_move=queue[next]
-
-
-
-
+        vector<int>::iterator it=find(queue.begin(), queue.end(),id);
+        queue.erase(it);
+        queue.insert(it+operate,id);
     }
+
+    for(int i=1;i<=n;i++)
+        cout<<queue[i]<<" ";
 
 
 
