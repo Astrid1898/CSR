@@ -14,7 +14,7 @@ using namespace std;
 int main()
 {
     IOS;
-    freopen("/home/jf-z/codefield/CODE_CPP/Cpp_Single/CSR/in.txt", "r", stdin);
+    freopen("D:\\zjf\\csp\\csp\\csp\\in.txt", "r", stdin);
 
     string line, last_line;
     bool is_paragraph = false, is_item = false;
@@ -36,17 +36,6 @@ int main()
             cout << "</ul>" << endl;
         }
 
-        auto it_ = find(line.begin(), line.end(), '_');
-        while (it_ != line.end())
-        {
-            line.erase(it_);
-            line.insert(it_ - line.begin(), "<em>");
-            it_ = find(line.begin(), line.end(), '_');
-            line.erase(it_);
-            line.insert(it_ - line.begin(), "</em>");
-            it_ = find(line.begin(), line.end(), '_');
-        }
-
         auto it_link = find(line.begin(), line.end(), '[');
         while (it_link != line.end())
         {
@@ -58,10 +47,25 @@ int main()
             auto it_url_end = find(line.begin(), line.end(), ')');
             string url = line.substr(it_url - line.begin() + 1, it_url_end - it_url - 1);
             line.erase(it_url, it_url_end + 1);
+            auto it_ = find(line.begin(), line.end(), '_');
             line.insert(it_link - line.begin(), "<a href=\"" + url + "\">" + text + "</a>");
 
             it_link = find(line.begin(), line.end(), '[');
         }
+
+
+
+        auto it_ = find(line.begin(), line.end(), '_');
+        while (it_ != line.end())
+        {
+            line.erase(it_);
+            line.insert(it_ - line.begin(), "<em>");
+            it_ = find(line.begin(), line.end(), '_');
+            line.erase(it_);
+            line.insert(it_ - line.begin(), "</em>");
+            it_ = find(line.begin(), line.end(), '_');
+        }
+
 
         // 标题的情况较为特殊，所以对其进行单独处理
         int head_level = std::count(line.begin(), line.end(), '#');
@@ -119,6 +123,10 @@ int main()
             last_line = line;
             continue;
         }
+
+
+
+
         cout << line << endl;
     }
 

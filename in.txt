@@ -4,7 +4,7 @@ Hello, world!
 This is _a_ test.
 
 
-* apples
+* apples[_link_](http://example.com)
 * oranges
 * pears
 
@@ -13,4 +13,7 @@ Test2
 # another head
 This is _another_ _paragraph_
 
-A [_link_](http://example.com). It is [t_e_st](http://test.com).
+A [_link_](http://example.com). It is [t_e_st](http://test.com)
+# _[t_e_st](http://test.com)_
+
+*The second line.
