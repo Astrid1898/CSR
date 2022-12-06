@@ -47,6 +47,22 @@ int main()
             it_ = find(line.begin(), line.end(), '_');
         }
 
+        auto it_link = find(line.begin(), line.end(), '[');
+        while (it_link != line.end())
+        {
+            auto it_link_end = find(line.begin(), line.end(), ']');
+            string text = line.substr(it_link - line.begin() + 1, it_link_end - it_link - 1);
+            line.erase(it_link, it_link_end + 1);
+
+            auto it_url = find(line.begin(), line.end(), '(');
+            auto it_url_end = find(line.begin(), line.end(), ')');
+            string url = line.substr(it_url - line.begin() + 1, it_url_end - it_url - 1);
+            line.erase(it_url, it_url_end + 1);
+            line.insert(it_link - line.begin(), "<a href=\"" + url + "\">" + text + "</a>");
+
+            it_link = find(line.begin(), line.end(), '[');
+        }
+
         // 标题的情况较为特殊，所以对其进行单独处理
         int head_level = std::count(line.begin(), line.end(), '#');
         if (head_level != 0)
