@@ -1,19 +1,7 @@
-# # Hello
-
-Hello, world!
-This is _a_ test.
-
-
-* apples[_link_](http://example.com)
-* oranges
-* pears
-
-
-Test2
-# another head
-This is _another_ _paragraph_
-
-A [_link_](http://example.com). It is [t_e_st](http://test.com)
-# _[t_e_st](http://test.com)_
-
-*The second line.
+6 6
+1 2 4
+2 3 4
+3 6 7
+1 4 2
+4 5 5
+5 6 6
