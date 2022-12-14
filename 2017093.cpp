@@ -20,7 +20,7 @@ int main()
     cin>>n>>m;
 
     cin.clear();cin.ignore();
-    string line,last;
+    string line,last,level;
     for(int i=0;i<n;i++)
     {
         getline(cin,line);
@@ -76,7 +76,10 @@ int main()
                     string key=line.substr(1,it_sep-line.begin()-1);
                     auto tmp=key.find_last_of('\"');
                     key.erase(tmp,1);
-                    last=key;
+                    if(level[0]!='.')
+                        last=level+'.'+key;
+                    else
+                        last=key;
                 }
             }
             else
@@ -87,10 +90,36 @@ int main()
                     string value=line.substr(1,it_sep-line.begin()-1);
                     auto tmp=value.find_last_of('\"');
                     value.erase(tmp,1);
-                    mp[last]=value;
+                    if(level[0]=='.')
+                        mp[last]="STRING "+value;
+                    else
+                        mp[level+"."+last]="STRING "+value;
+                    last.clear();
                 }
             }
         }
+        else if(line[0]=='{')
+        {
+            if(level.empty())
+            {
+                level.push_back('.');
+            }
+            else
+            {
+                if(level[0]=='.')
+                {
+                    mp[last] = "OBJECT";
+                    level.clear();
+                    level=last;
+                }
+                else
+                {
+                    mp[level + '.' + last] = "OBJECT";
+                    level=level+"."+last;
+                }
+            }
+        }
+
 
 
     }
