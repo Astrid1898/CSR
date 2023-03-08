@@ -20,7 +20,7 @@ int main()
     cin>>n>>m;
 
     cin.clear();cin.ignore();
-    string line,last,level;
+    string line,last,level,mode="key";
     for(int i=0;i<n;i++)
     {
         getline(cin,line);
@@ -55,70 +55,9 @@ int main()
 //            cout<<line<<endl;
         }
 
+        auto it_begin
 
 
-
-
-
-
-
-
-
-
-
-        if(line[0]=='\"')
-        {
-            if(last.empty())
-            {
-                auto it_sep=find(line.begin(),line.end(),':');
-                if(it_sep!=line.end())
-                {
-                    string key=line.substr(1,it_sep-line.begin()-1);
-                    auto tmp=key.find_last_of('\"');
-                    key.erase(tmp,1);
-                    if(level[0]!='.')
-                        last=level+'.'+key;
-                    else
-                        last=key;
-                }
-            }
-            else
-            {
-                auto it_sep=find(line.begin(),line.end(),',');
-                if(it_sep!=line.end())
-                {
-                    string value=line.substr(1,it_sep-line.begin()-1);
-                    auto tmp=value.find_last_of('\"');
-                    value.erase(tmp,1);
-                    if(level[0]=='.')
-                        mp[last]="STRING "+value;
-                    else
-                        mp[level+"."+last]="STRING "+value;
-                    last.clear();
-                }
-            }
-        }
-        else if(line[0]=='{')
-        {
-            if(level.empty())
-            {
-                level.push_back('.');
-            }
-            else
-            {
-                if(level[0]=='.')
-                {
-                    mp[last] = "OBJECT";
-                    level.clear();
-                    level=last;
-                }
-                else
-                {
-                    mp[level + '.' + last] = "OBJECT";
-                    level=level+"."+last;
-                }
-            }
-        }
 
 
 
