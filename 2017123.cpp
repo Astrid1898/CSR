@@ -6,31 +6,30 @@
 
 using namespace std;
 
+//这里不能使用这一句，因为同时使用了printf和cout，如果解除同步会出问题
 #define IOS ios::sync_with_stdio(false);cin.tie(0);cout.tie(0);
 
 
 //将所有可能出现的英文和对应的数字存储起来
-unordered_map<string, int> text = {
-        {"jan", 1},
-        {"feb", 2},
-        {"mar", 3},
-        {"apr", 4},
-        {"may", 5},
-        {"jun", 6},
-        {"jul", 7},
-        {"sep", 9},
-        {"aug", 8},
-        {"oct", 10},
-        {"nov", 11},
-        {"dec", 12},
-        {"mon", 1},
-        {"tue", 2},
-        {"wed", 3},
-        {"thu", 4},
-        {"fri", 5},
-        {"sat", 6},
-        {"sun", 0}
-};
+unordered_map<string, int> text = {{"jan", 1},
+                                   {"feb", 2},
+                                   {"mar", 3},
+                                   {"apr", 4},
+                                   {"may", 5},
+                                   {"jun", 6},
+                                   {"jul", 7},
+                                   {"sep", 9},
+                                   {"aug", 8},
+                                   {"oct", 10},
+                                   {"nov", 11},
+                                   {"dec", 12},
+                                   {"mon", 1},
+                                   {"tue", 2},
+                                   {"wed", 3},
+                                   {"thu", 4},
+                                   {"fri", 5},
+                                   {"sat", 6},
+                                   {"sun", 0}};
 
 //定义非闰年每月的天数
 int M[13] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
@@ -92,7 +91,7 @@ public:
         return month;
     }
 
-    int getDay() const
+    int getTheDay() const
     {
         return day;
     }
@@ -168,7 +167,7 @@ public:
 //    输出时间
     void printtime()
     {
-        printf("%04d%02d%2d%02d%02d ", year, month, day, hour, minute);
+        printf("%04d%02d%02d%02d%02d ", year, month, day, hour, minute);
     }
 
 };
@@ -197,21 +196,21 @@ vector<int> workstr(string str, int n)
             i = j;
         }
         //然后对每一项，分别处理其中可能存在的的-
-        for(auto x:val)
+        for (auto x: val)
         {
-            if(x.find('-')==-1)
+            if (x.find('-') == -1)
             {
-                res[point(x)]=1;
+                res[point(x)] = 1;
             }
             else
             {
-                int k=x.find('-');
-                string str1=x.substr(0,k);
-                string str2=x.substr(k+1);
-                int l= point(str1); //找出左时间端点
-                int r=point(str2);  //找出右时间端点
-                for(int i=l;i<=r;i++)   //该区间内的时间均置1
-                    res[i]=1;
+                int k = x.find('-');
+                string str1 = x.substr(0, k);
+                string str2 = x.substr(k + 1);
+                int l = point(str1); //找出左时间端点
+                int r = point(str2);  //找出右时间端点
+                for (int i = l; i <= r; i++)   //该区间内的时间均置1
+                    res[i] = 1;
             }
 
 
@@ -237,17 +236,16 @@ struct cmd
     {
         minutes = workstr(mt, 60);
         hours = workstr(h, 24);
-        days= workstr(d,32);
-        months= workstr(mth,13);
-        weeks= workstr(w,7);
-        command=c;
+        days = workstr(d, 32);
+        months = workstr(mth, 13);
+        weeks = workstr(w, 7);
+        command = c;
     }
-}C[21];
+} C[25];
 
 
 int main()
 {
-    IOS;
     freopen("D:\\zjf\\csp\\csp\\csp\\in.txt", "r", stdin);
 
 
@@ -258,21 +256,21 @@ int main()
     {
         string minutes, hours, day, month, weekday, command;
         cin >> minutes >> hours >> day >> month >> weekday >> command;
-        C[i]=cmd(minutes,hours,day,month,weekday,command);
+        C[i] = cmd(minutes, hours, day, month, weekday, command);
     }
 
-    Time begin=Time(s);
-    Time end=Time(t);
+    Time begin = Time(s);
+    Time end = Time(t);
 
-    for(auto i=begin;i<end;i.add())
+    for (auto i = begin; i < end; i.add())
     {
-        int mth=i.getMonth(),d=i.getDay(),h=i.getHour(),m=i.getMinute(),w=i.getWeek();
-        for(int j=0;j<n;j++)
+        int mth = i.getMonth(), d = i.getTheDay(), h = i.getHour(), m = i.getMinute(), w = i.getWeek();
+        for (int j = 0; j < n; j++)
         {
-            if(C[j].months[mth] && C[j].days[d] && C[j].hours[h] && C[j].minutes[m] && C[j].weeks[w])
+            if (C[j].months[mth] && C[j].days[d] && C[j].hours[h] && C[j].minutes[m] && C[j].weeks[w])
             {
                 i.printtime();
-                cout<<C[j].command<<endl;
+                cout << C[j].command << endl;
             }
 
         }

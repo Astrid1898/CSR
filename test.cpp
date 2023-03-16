@@ -175,6 +175,7 @@ struct time //时间结构体，模拟时间
 };
 int main()
 {
+    freopen("D:\\zjf\\csp\\csp\\csp\\in.txt", "r", stdin);
     int n;
     string s, t;
     cin >> n >> s >> t;
